@@ -4,10 +4,12 @@ import './navbar.scss';
 import Link from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faSignIn, faBars, faClose } from "@fortawesome/free-solid-svg-icons";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { usePathname } from "next/navigation";
+import { CartContext } from '@/app/context/CartContex';
 
 const Navbar: React.FC = () => {
+  const cart = useContext(CartContext);
   const pathName = usePathname();
   const [active, setActive] = useState(false);
   const handleNavbar = () => {
@@ -16,6 +18,9 @@ const Navbar: React.FC = () => {
   const handleClickMenu = () => {
     setActive(false);
   }
+
+  const productsCount = cart.items?.reduce((sum, product: any) => sum + product.quantity, 0);
+
 
   return (
     <header className="header">
@@ -46,11 +51,15 @@ const Navbar: React.FC = () => {
 
           <div className={`colRight  ${active ? 'on' : ''}`}>
             <ul>
-              <li>
-                <Link href="/cart">
-                  <button className="btn btnCart"><FontAwesomeIcon icon={faCartShopping} className="icon" /> Cart</button>
-                </Link>
-              </li>
+              {productsCount > 0 ? (
+                <li>
+                  <Link href="/cart">
+                    <button className="btn btnCart"><FontAwesomeIcon icon={faCartShopping} className="icon" /> {productsCount}Cart</button>
+                  </Link>
+                </li>
+              ) : (
+                <></>
+              )}
               <li>
                 <Link href="/login">
                   <button className="btn btnLogin"><FontAwesomeIcon icon={faSignIn} className="icon" /> Login</button>

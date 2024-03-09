@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import FloatingCart from './components/floatingCart/FloatingCart';
+import CartProvider from './context/CartContex';
+import SearchProvider from './context/SearchContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +21,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-        <FloatingCart />
-        <Footer />
-      </body>
+      <CartProvider>
+        <SearchProvider>
+          <body>
+            <Navbar />
+            {children}
+            <FloatingCart />
+            <Footer />
+          </body>
+        </SearchProvider>
+      </CartProvider>
     </html>
   );
 }

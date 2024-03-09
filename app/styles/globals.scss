@@ -32,6 +32,14 @@ html {
   // overflow-x: hidden;
   // scroll-behavior: smooth;
   // scroll-padding-top: 7rem;
+
+  @include tablet {
+    font-size: 52.5%;
+  }
+}
+
+body {
+  background-color: $bgColorPrimary;
 }
 
 .wrapContainer {

@@ -1,0 +1,274 @@
+/*
+Author: Wanda Azhar
+Location: Michigan, USA
+Contact: wandaazhar@gmail.com
+Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink distributors, built with Next.js, React.js, and TypeScript. It offers a visually engaging experience for users to explore and purchase a variety of powder drink products.
+*/
+
+@import '../../styles/responsive.scss';
+@import '../../styles/variable.scss';
+
+
+.testimonial {
+  margin-top: 5rem;
+  background: #c9dced;
+  padding: 5rem 0;
+  color: #0b5186;
+  // height: 70rem;
+
+  .wrapContainer {
+    .boxTestimonial {
+      // background: #c9dced;
+      // border: .1rem solid salmon;
+
+      .header {
+        background: #c9dced;
+
+        h1 {
+          font-size: 3.5rem;
+        }
+
+        p {
+          font-size: 1.6rem;
+        }
+      }
+
+      .imagesTestimonial {
+        margin-top: 5rem;
+        display: grid;
+        // grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+        grid-template-columns: repeat(6, 1fr);
+        // grid-template-rows: repeat(4, 1fr);
+        gap: 1rem;
+        // grid-template-rows: repeat(4, 1fr);
+        // border: .1rem solid green;
+        // padding: 1rem;
+        // height: 30rem;
+
+        @media (max-width: 480px) {
+          grid-template-columns: repeat(3, 1fr);
+          margin-top: 2rem;
+        }
+
+
+
+        .boxGridItemImageTestimonial {
+          position: relative;
+          // border: .1rem solid salmon;
+          // padding: 1rem;
+          height: 20rem;
+          overflow: hidden;
+
+          @media (max-width: 375px) {
+            height: 17rem;
+          }
+
+          @media (min-width: 1054px) {
+            height: 26rem;
+          }
+
+
+
+          &.imageGrid1 {}
+
+          &.imageGrid2 {}
+
+          &.imageGrid3 {}
+
+          &.imageGrid4 {}
+
+          &.imageGrid5 {}
+
+          &.imageGrid6 {}
+
+          .boxItemImageTestimonial {
+            // border: .1rem solid green;
+            border-radius: 2rem;
+            overflow: hidden;
+
+            &.image1 {
+              position: absolute;
+              left: 0;
+              bottom: 0;
+
+              @media (max-width: 475px) {
+                bottom: 5rem;
+              }
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            &.image2 {
+              position: absolute;
+              left: 0;
+              top: 2rem;
+              width: 100%;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            &.image3 {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            &.image4 {
+              position: absolute;
+              left: 0rem;
+              top: 4rem;
+              width: 100%;
+
+              @media (max-width: 428px) {
+                top: 3rem;
+              }
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            &.image5 {
+              position: absolute;
+              left: 0rem;
+              bottom: 1rem;
+              width: 100%;
+
+              @media (max-width: 475px) {
+                bottom: 3rem;
+              }
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            &.image6 {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+
+
+
+      .boxContentTestimonial {
+        // border: .1rem solid green;
+        margin-top: 3rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        row-gap: 2rem;
+        column-gap: 1rem;
+
+        @media (max-width: 393px) {
+          grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+
+        }
+
+        .boxItemContentTestimonial {
+
+
+          .groupBox {
+            // border: .1rem solid salmon;
+            width: 20rem;
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: #DAE5E5;
+
+            @media (max-width: 393px) {
+              width: 18rem;
+              // grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+
+            }
+
+            p {
+              font-size: 1.4rem;
+            }
+
+            h1 {
+              font-size: 1.6rem;
+            }
+          }
+
+          .groupBoxDesc {
+            padding: 1rem;
+
+            .desc {
+              // margin-top: 1rem;
+              font-size: 1.2rem;
+            }
+
+            .city {
+              font-size: 1.2rem;
+              font-weight: 600;
+            }
+          }
+
+
+          &.testimonial1 {
+            transform: rotate(-4deg);
+          }
+
+          &.testimonial2 {
+            transform: rotate(3deg);
+          }
+
+          &.testimonial3 {
+            transform: rotate(-4deg);
+
+            @include phone {
+              transform: rotate(3deg);
+            }
+          }
+
+          &.testimonial4 {
+            transform: rotate(4deg);
+
+            @include phone {
+              transform: rotate(-4deg);
+            }
+          }
+
+          &.testimonial5 {
+            transform: rotate(-5deg);
+          }
+
+          &.testimonial6 {
+            transform: rotate(3deg);
+          }
+        }
+      }
+    }
+  }
+}

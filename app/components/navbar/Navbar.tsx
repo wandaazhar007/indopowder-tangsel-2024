@@ -3,7 +3,7 @@ import Image from 'next/image';
 import './navbar.scss';
 import Link from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComment, faCartArrowDown, faCartShopping, faGear, faHandshake, faMoneyBill, faPhoneSlash, faSmile, faSquareArrowUpRight, faSignIn, faBars, faClose } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faSignIn, faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { useState } from 'react';
 import { usePathname } from "next/navigation";
 
@@ -35,11 +35,11 @@ const Navbar: React.FC = () => {
             <nav>
               <ul className={active ? 'on' : ''}>
                 <li><Link href="/" className={pathName === '/' ? 'on' : ''} onClick={handleClickMenu}>Home</Link></li>
-                <li><Link href="/tentang" className={pathName === '/tentang' ? 'on' : ''} onClick={handleClickMenu}>Tentang</Link></li>
-                <li><Link href="/produk">Produk</Link></li>
-                <li><Link href="/ulasan">Ulasan</Link></li>
-                <li><Link href="/faq">Faq</Link></li>
-                <li><Link href="/kontak">Kontak</Link></li>
+                <li><Link href="/about" className={pathName === '/about' ? 'on' : ''} onClick={handleClickMenu}>Tentang</Link></li>
+                <li><Link href="/products" className={pathName === '/products' ? 'on' : ''} onClick={handleClickMenu}>Produk</Link></li>
+                {/* <li><Link href="/ulasan">Ulasan</Link></li> */}
+                <li><Link href="/faq" className={pathName === '/faq' ? 'on' : ''} onClick={handleClickMenu}>Faq</Link></li>
+                <li><Link href="/contact" className={pathName === '/contact' ? 'on' : ''} onClick={handleClickMenu}>Kontak</Link></li>
               </ul>
             </nav>
           </div>
@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/cart">
+                <Link href="/login">
                   <button className="btn btnLogin"><FontAwesomeIcon icon={faSignIn} className="icon" /> Login</button>
                 </Link>
               </li>

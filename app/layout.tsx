@@ -2,6 +2,8 @@ import './styles/globals.scss';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
+import FloatingCart from './components/floatingCart/FloatingCart';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +22,8 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <FloatingCart />
+        <Footer />
       </body>
     </html>
   );

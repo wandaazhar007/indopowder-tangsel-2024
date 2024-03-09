@@ -1,0 +1,64 @@
+/*
+Author: Wanda Azhar
+Location: Michigan, USA
+Contact: wandaazhar@gmail.com
+Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink distributors, built with Next.js, React.js, and TypeScript. It offers a visually engaging experience for users to explore and purchase a variety of powder drink products.
+*/
+
+@import '../../styles/responsive.scss';
+@import '../../styles/variable.scss';
+
+
+.featured {
+  margin-top: 5rem;
+
+  .wrapContainer {
+    .boxFeatured {
+      // border: .1rem solid green;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+        gap: .5rem;
+      }
+
+      .boxItemFeatured {
+        // border: .1rem solid salmon;
+        border-radius: 1rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        padding: 1rem;
+        background: #E2E9EF;
+        color: #0b5186;
+        // box-shadow: $boxShadowPrimary;
+
+        @include phone {
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .icon {
+          font-size: 3rem;
+        }
+
+        .text {
+          @include phone {
+            text-align: center;
+          }
+
+          h1 {
+            font-size: 1.6rem;
+          }
+
+          p {
+            margin-top: .3rem;
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+}

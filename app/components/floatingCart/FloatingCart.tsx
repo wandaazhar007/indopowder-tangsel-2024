@@ -13,9 +13,10 @@ const FloatingCart = () => {
   return (
     <section className={`floatingCart ${productsCount ? 'active' : ""}`}>
       <Link href="/cart">
-        <div className="boxFloatingCart">
-          <span> {productsCount}</span>
+        <div className={`boxFloatingCart ${productsCount ? 'active' : ""}`}>
+          <span className='productCount'> {productsCount}</span>
           <FontAwesomeIcon icon={faCartShopping} className='icon' />
+          <span className='checkout'>Checkout</span>
         </div>
       </Link>
     </section>

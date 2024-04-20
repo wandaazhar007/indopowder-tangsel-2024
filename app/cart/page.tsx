@@ -1,19 +1,35 @@
 'use client'
 import './cart.scss';
-import { faArrowLeft, faClock, faMapLocation } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faClock, faL, faMapLocation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 // import CartComponent from "../components/cart/CartComponent";
 // import { CartContext } from "../context/CartContext";
 import CartList from '../components/cartList/CartList';
 import { CartContext } from '../context/CartContex';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 
 const CartPage = () => {
+  const [tip, setTip] = useState(0);
+  const [valueCustomTip, setValueCustumTip] = useState(0);
+  const [showCustomTip, setShowCustomTip] = useState(false);
   const cart = useContext(CartContext);
   const productsCount = cart.items?.reduce((sum, product: any) => sum + product.quantity, 0);
+  const tipValue = (cart.getTotalCost().toFixed(2) / 100 * tip);
+
+  const handleTip = (value: any) => {
+    setTip(value);
+  }
+  const handleCustomTip = () => {
+    setShowCustomTip(!showCustomTip);
+  }
+
+  const handleAddCustomTip = () => {
+    setTip(valueCustomTip)
+  }
+
   return (
     <section className="cartPage">
       <div className="wrapContainer">
@@ -53,46 +69,50 @@ const CartPage = () => {
             <div className="addTip">
               <h1>ADD A TIP</h1>
               <div className="boxesAddTip">
-                <button className="boxItemAddTip active">
+                <button className={`boxItemAddTip ${tip === 3 ? 'active' : ''}`} onClick={() => handleTip(3)}>
+                  <h1>3%</h1>
+                  <h1>Rp.{(cart.getTotalCost().toFixed(2) / 100 * 3)}</h1>
+                </button>
+                <button className={`boxItemAddTip ${tip === 5 ? 'active' : ''}`} onClick={() => handleTip(5)}>
+                  <h1>5%</h1>
+                  <h1>Rp.{(cart.getTotalCost().toFixed(2) / 100 * 5)}</h1>
+                </button>
+                <button className={`boxItemAddTip ${tip === 10 ? 'active' : ''}`} onClick={() => handleTip(10)}>
                   <h1>10%</h1>
-                  <h1>$40.000</h1>
+                  <h1>Rp.{(cart.getTotalCost().toFixed(2) / 100 * 10)}</h1>
                 </button>
-                <button className="boxItemAddTip">
-                  <h1>15%</h1>
-                  <h1>$56</h1>
-                </button>
-                <button className="boxItemAddTip">
-                  <h1>20%</h1>
-                  <h1>$69</h1>
-                </button>
-                <button className="boxItemAddTip">
-
-                  <h1 style={{ color: "red" }}>Cancel</h1> : <h1>Other</h1>
-
-                </button>
+                {showCustomTip ? (
+                  <button className="boxItemAddTip" onClick={() => setShowCustomTip(false)}>
+                    <span style={{ color: "red" }}>Cancel X</span>
+                  </button>
+                ) : (
+                  <button className="boxItemAddTip" onClick={() => setShowCustomTip(true)}> Other</button>
+                )}
               </div>
-              <div className="customTip">
-                <input type="number" placeholder="type your tip here..." className="inputTip" />
-                <button className="btnCustomTip">Add</button>
-              </div>
+              {showCustomTip && (
+                <div className="customTip">
+                  <input type="number" placeholder="type your tip here..." className="inputTip" value={valueCustomTip} onChange={(e: any) => setValueCustumTip(e.target.value)} />
+                  <button className="btnCustomTip" onClick={() => handleAddCustomTip()}>Add</button>
+                </div>
+              )}
 
             </div>
             <div className="summary">
               <div className="boxSummary">
                 <p>Subtotal</p>
-                <p>$89</p>
+                <p>{cart.getTotalCost()}</p>
               </div>
-              <div className="boxSummary">
+              {/* <div className="boxSummary">
                 <p>Estimated taxes (MI Sales Tax)</p>
-                <p>$0.42</p>
-              </div>
+                <p>0.42</p>
+              </div> */}
               <div className="boxSummary">
                 <p>Tip</p>
-                <p>$23</p>
+                <p>{tipValue}</p>
               </div>
               <div className="boxSummary">
                 <p>Total</p>
-                <p>$89</p>
+                <p>Rp.{cart.getTotalCost() + tipValue}</p>
               </div>
               <div className="infoSummary">Additional taxes and fees will be calculated at checkout
               </div>

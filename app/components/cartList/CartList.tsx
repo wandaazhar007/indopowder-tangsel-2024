@@ -1,10 +1,10 @@
 'use client'
 import Image from 'next/image';
-import './cartList.scss';
+// import './cartList.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faMapLocation, faTrash } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+// import Link from 'next/link';
+// import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { CartContext } from '@/app/context/CartContex';
 import { useContext, useState } from 'react';
 
@@ -139,7 +139,7 @@ const CartList = ({ id, quantity }: { id: number, quantity: number }) => {
           </div>
         </div>
         <div className="deleteCart">
-          <span>{(quantity * price).toFixed(2)}</span>
+          <span>{(quantity * price)}</span>
           <FontAwesomeIcon icon={faTrash} className="icon" onClick={() => cart.deleteFromCart(id)} />
         </div>
       </div>

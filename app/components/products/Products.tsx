@@ -10,11 +10,12 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import { CartContext } from '@/app/context/CartContex';
+import { ProductsType } from '@/app/types/types';
 
 const Products = () => {
   // const [page, setPage] = useState(0);
   // const [limit, setLimit] = useState(12);
-  const [products, setProducts] = useState<any>([]);
+  const [products, setProducts] = useState([]);
 
   const getProducts = async () => {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}`)
@@ -25,7 +26,7 @@ const Products = () => {
     getProducts();
   }, []);
 
-  console.log(products)
+  // console.log(products)
   const cart = useContext(CartContext);
 
   const notify = () => {
@@ -48,21 +49,33 @@ const Products = () => {
     notify();
   }
 
+
+  // type Products = {
+  //   id: number,
+  //   name: string,
+  //   category: [] | any,
+  //   price: number,
+  //   urlImage: string
+  // }
+
   return (
     <section className="products">
       <div className="wrapContainer">
         <div className="boxProducts">
-          {products.map((product: any) => (
-            <div className="boxProductsItem" key={product.id} >
-              <div className="imageProduct">
-                <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
+          {products.map((product: ProductsType) => (
+            <>
+              <div className="boxProductsItem" key={product.id} >
+                <div className="imageProduct">
+                  <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
+                </div>
+                <hr />
+                <p className="category">{product.category.name}</p>
+                <h1 className="title">{product.name}</h1>
+                <p className="price">Rp. {product.price},-</p>
+                <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
               </div>
-              <hr />
-              <p className="category">{product.category.name}</p>
-              <h1 className="title">{product.name}</h1>
-              <p className="price">Rp. {product.price},-</p>
-              <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
-            </div>
+              {/* <h5>{product.urlImage}</h5> */}
+            </>
           ))}
 
         </div>
@@ -80,6 +93,7 @@ const Products = () => {
         draggable
         pauseOnHover
         theme="colored"
+        className="toastNotify"
       />
 
     </section>

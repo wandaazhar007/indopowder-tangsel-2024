@@ -13,8 +13,6 @@ import { CartContext } from '@/app/context/CartContex';
 import { ProductsType } from '@/app/types/types';
 
 const Products = () => {
-  // const [page, setPage] = useState(0);
-  // const [limit, setLimit] = useState(12);
   const [products, setProducts] = useState([]);
 
   const getProducts = async () => {
@@ -26,7 +24,6 @@ const Products = () => {
     getProducts();
   }, []);
 
-  // console.log(products)
   const cart = useContext(CartContext);
 
   const notify = () => {
@@ -45,18 +42,8 @@ const Products = () => {
 
   const handleClick2 = (id: number, nameProduct: string, price: number) => {
     cart.addOneToCart(id, nameProduct, price);
-    // console.log("first")
     notify();
   }
-
-
-  // type Products = {
-  //   id: number,
-  //   name: string,
-  //   category: [] | any,
-  //   price: number,
-  //   urlImage: string
-  // }
 
   return (
     <section className="products">

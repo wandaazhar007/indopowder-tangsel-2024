@@ -1,5 +1,6 @@
 'use client'
 import { createContext, useEffect, useState } from "react";
+import { ContexValueType, ProductsType } from "../types/types";
 
 export const CartContext = createContext({
   items: [],
@@ -27,19 +28,19 @@ export function CartProvider({ children }: any) {
   }, [cartProducts]);
 
   function getProductQuantity(id: number) {
-    const quantity = cartProducts.find((product: any) => product.id === id)?.quantity
+    const quantity = cartProducts.find((product: ProductsType) => product.id === id)?.quantity
     if (quantity === undefined) {
       return 0;
     }
     return quantity;
   }
 
-  function addOneToCart(id: number, productName: string, price: number) {
+  function addOneToCart(id: number, name: string, price: number) {
     const quantity = getProductQuantity(id);
     if (quantity === 0) {
-      setCartProducts([...cartProducts, { id: id, productName: productName, price: price, quantity: 1 }]);
+      setCartProducts([...cartProducts, { id: id, name: name, price: price, quantity: 1 }]);
     } else {
-      setCartProducts(cartProducts.map((product: any) => product.id === id ? { ...product, quantity: product.quantity + 1 } : product));
+      setCartProducts(cartProducts.map((product: ProductsType) => product.id === id ? { ...product, quantity: product.quantity + 1 } : product));
     }
   }
 
@@ -50,7 +51,7 @@ export function CartProvider({ children }: any) {
       deleteFromCart(id);
     } else {
       setCartProducts(
-        cartProducts.map((product: any) =>
+        cartProducts.map((product: ProductsType) =>
           product.id === id
             ? { ...product, quantity: product.quantity - 1 }
             : product
@@ -59,21 +60,22 @@ export function CartProvider({ children }: any) {
     }
   }
 
-  function deleteFromCart(id: any) {
-    setCartProducts((cartProducts: any) => cartProducts.filter((currentProduct: any) => {
+  function deleteFromCart(id: number) {
+    setCartProducts((cartProducts: ProductsType) => cartProducts.filter((currentProduct: ProductsType) => {
       return currentProduct.id != id;
     }))
   }
 
   function getTotalCost() {
     let totalCost = 0;
-    const amount = cartProducts.reduce((sum: any, product: any) => sum + (product.price * product.quantity), 0)
+    const amount = cartProducts.reduce((sum: string, product: ProductsType) => sum + (product.price * product.quantity), 0)
 
     totalCost += amount
     return totalCost;
   }
 
-  const contextValue: any = {
+
+  const contextValue: ContexValueType = {
     items: cartProducts,
     getProductQuantity,
     addOneToCart,

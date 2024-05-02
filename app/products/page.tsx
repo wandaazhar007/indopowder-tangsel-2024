@@ -12,16 +12,19 @@ import { CartContext } from '../context/CartContex';
 
 const productsPage = () => {
   const [products, setProducts] = useState([]);
+  const [keywordSearch, setKeywordSearch] = useState("");
+  const [page, setPage] = useState("");
+  const [limit, setLimit] = useState(12);
 
   const getProducts = async () => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?search_query=${keywordSearch}&page=${page}&limit=${limit}`);
     setProducts(response.data.result);
     // console.log(response.data.result);
   }
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [keywordSearch]);
 
   const cart = useContext(CartContext);
   // console.log(cart)
@@ -52,7 +55,8 @@ const productsPage = () => {
     <>
       <section className="productsPage">
         <div className="wrapContainer">
-          <SearchProduct />
+          <SearchProduct keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} />
+          <h4>{keywordSearch}</h4>
           <div className="boxProductsPage">
             {products.map((product: ProductsType) => (
               <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} handleClick={handleClick} />

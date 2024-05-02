@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image';
 import './footer.scss';
 import Link from 'next/link';
@@ -6,11 +7,13 @@ import { faGoogle, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-i
 
 const Footer = () => {
 
-
   return (
-    <footer className="footer">
+    <footer
+      className="footer"
+    >
       <div className="wrapContainer">
         <div className="boxFooter">
+
           <div className="footer1">
             <div className="boxItemFooter1 boxItem1">
               <h1 className="title">Indopowder Tangsel</h1>
@@ -69,6 +72,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
     </footer>
   )
 }

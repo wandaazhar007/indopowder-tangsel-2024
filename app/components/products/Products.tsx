@@ -16,7 +16,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   const getProducts = async () => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}`)
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?limit=12`)
     setProducts(response.data.result);
   }
 
@@ -61,7 +61,6 @@ const Products = () => {
                 <p className="price">Rp. {product.price},-</p>
                 <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
               </div>
-              {/* <h5>{product.urlImage}</h5> */}
             </>
           ))}
 

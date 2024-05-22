@@ -11,9 +11,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import { CartContext } from '@/app/context/CartContex';
 import { ProductsType } from '@/app/types/types';
+import ProductSingleModal from '../productSingleModal/ProductSingleModal';
 
 const Products = () => {
+  const [openModal, setOpenModal] = useState(false);
   const [products, setProducts] = useState([]);
+  const [propId, setPropId] = useState(0);
 
   const getProducts = async () => {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?limit=12`)
@@ -45,13 +48,19 @@ const Products = () => {
     notify();
   }
 
+  const handleModal = (id: number) => {
+    // const handleModal = ({ slug, id, name, price }: ModalType) => {
+    setOpenModal(true);
+    setPropId(id);
+  }
+
   return (
     <section className="products">
       <div className="wrapContainer">
         <div className="boxProducts">
           {products.map((product: ProductsType) => (
             <>
-              <div className="boxProductsItem" key={product.id} >
+              <div className="boxProductsItem" key={product.id} onClick={() => handleModal(product.id)}>
                 <div className="imageProduct">
                   <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
                 </div>
@@ -82,6 +91,7 @@ const Products = () => {
         className="toastNotify"
       />
 
+      {openModal && <ProductSingleModal openModal={openModal} closeModal={() => setOpenModal(false)} propId={propId} />}
     </section>
   )
 }

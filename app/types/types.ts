@@ -17,3 +17,9 @@ export type ContexValueType = {
   deleteFromCart: (number: any) => void,
   getTotalCost: any
 }
+
+export type openModalTypes = {
+  openModal: boolean,
+  closeModal: any,
+  propId: number
+}

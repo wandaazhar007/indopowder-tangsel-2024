@@ -23,11 +23,11 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleM
 
 
 
-  const handleModal = (id: number) => {
-    // const handleModal = ({ slug, id, name, price }: ModalType) => {
-    setOpenModal(true);
-    setPropId(id);
-  }
+  // const handleModal = (id: number) => {
+  //   // const handleModal = ({ slug, id, name, price }: ModalType) => {
+  //   setOpenModal(true);
+  //   setPropId(id);
+  // }
 
   const notify = () => {
     toast.success('Item has been added in the cart!', {
@@ -52,19 +52,6 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleM
         <h1 className="title" onClick={() => handleModal(id)}>{name}</h1>
         <p className="price">Rp. {price},-</p>
         <button className="buttonAddToCart" onClick={() => handleClick2(id, name, price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
-        <ToastContainer
-          position="bottom-center"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-          className="toastNotify"
-        />
       </div>
 
     </>

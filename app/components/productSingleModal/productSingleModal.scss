@@ -7,3 +7,181 @@ Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink
 
 @import '../../styles/responsive.scss';
 @import '../../styles/variable.scss';
+
+.productSingleModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  backdrop-filter: blur(.2rem);
+
+  .modalProductContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .box {
+      background-color: #fff;
+      width: 90%;
+      max-width: 43rem;
+      padding: 2rem;
+      border-radius: 1rem;
+      position: relative;
+      box-shadow: 0rem 0rem 1rem .1rem rgba(7, 74, 173, 0.5);
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .modalBody {
+        .contentImage {
+          max-width: 40rem;
+          border-radius: 1rem;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .titleDetailProduct {
+          font-size: 2rem;
+          margin-top: 1rem;
+          font-weight: 700;
+        }
+
+        .priceDetailProduct {
+          margin-top: .5rem;
+          font-size: 1.6rem;
+          color: grey;
+          font-weight: 600;
+        }
+
+        .descDetailProduct {
+          font-size: 1.4rem;
+          margin-top: 2rem;
+          color: $colorGrey;
+          height: 12rem;
+          overflow: auto;
+        }
+      }
+
+      .modalFooter {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .addToCart {
+          padding: 1rem;
+          height: 5rem;
+          width: 80%;
+          background-color: $colorBlue;
+          color: $colorWhite;
+          border: .01rem solid white;
+          border-radius: .5rem;
+          cursor: pointer;
+          font-size: 1.6rem;
+
+          .icon {
+            margin-right: 2rem;
+          }
+        }
+
+        .closeBtn2 {
+          padding: 1rem;
+          height: 5rem;
+          width: 5rem;
+          background-color: $colorBlue;
+          color: $colorWhite;
+          border: .01rem solid var(--colorBlue);
+          border-radius: .5rem;
+          cursor: pointer;
+          font-size: 1.4rem;
+          box-shadow: $boxShadow;
+        }
+      }
+    }
+  }
+}
+
+
+// SKELETON MODAL
+
+@keyframes skeletonLoading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+.skeleton {
+  animation: skeletonLoading 1s linear infinite alternate;
+}
+
+.skeleton.skeletonImageModal {
+  width: 100%;
+  height: 35rem;
+  border-radius: 1rem;
+  opacity: .5;
+}
+
+.skeleton.skeletonTitleModal {
+  margin-top: 2rem;
+  width: 50%;
+  height: 1.64rem;
+  border-radius: 1rem;
+}
+
+.skeleton.skeletonPriceModal {
+  margin-top: 1rem;
+  width: 20%;
+  height: 1rem;
+  border-radius: 1rem;
+}
+
+.skeleton.skeletonDescModal {
+  margin-top: 1rem;
+  width: 90%;
+  height: 1rem;
+  border-radius: 1rem;
+}
+
+.skeleton.skeletonBtnCartModal {
+  margin-top: 2rem;
+  padding: 1rem;
+  height: 5rem;
+  width: 80%;
+  border-radius: .5rem;
+  border: none;
+}
+
+.skeleton.skeletonBtnCloseModal {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  padding: 1rem;
+  height: 5rem;
+  width: 5rem;
+  border-radius: .5rem;
+  border: none;
+}
+
+.Toastify__toastBody {
+  font-size: 1.6rem;
+  text-align: center;
+
+  @include tablet {
+    font-size: 2.2rem;
+  }
+}

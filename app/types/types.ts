@@ -6,7 +6,8 @@ export type ProductsType = {
   urlImage: string,
   handleClick: any,
   quantity: any,
-  filter: any
+  filter: any,
+  handleModal: any
 }
 
 export type ContexValueType = {

@@ -9,12 +9,15 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import { CartContext } from '../context/CartContex';
+import ProductSingleModal from '../components/productSingleModal/ProductSingleModal';
 
 const productsPage = () => {
   const [products, setProducts] = useState([]);
   const [keywordSearch, setKeywordSearch] = useState("");
   const [page, setPage] = useState("");
   const [limit, setLimit] = useState(12);
+  const [propId, setPropId] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
 
   const getProducts = async () => {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?search_query=${keywordSearch}&page=${page}&limit=${limit}`);
@@ -29,6 +32,11 @@ const productsPage = () => {
   const cart = useContext(CartContext);
   // console.log(cart)
 
+  const handleModal = (id: number) => {
+    // const handleModal = ({ slug, id, name, price }: ModalType) => {
+    setOpenModal(true);
+    setPropId(id);
+  }
   const notify = () => {
     toast.success('Item has been added in the cart!', {
       position: "top-center",
@@ -59,11 +67,13 @@ const productsPage = () => {
           <h4>{keywordSearch}</h4>
           <div className="boxProductsPage">
             {products.map((product: ProductsType) => (
-              <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} handleClick={handleClick} />
+              <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} handleClick={handleClick} handleModal={handleModal} />
               // <ProductItem key={product.id} products={products} />
             ))}
           </div>
         </div>
+
+        {openModal && <ProductSingleModal openModal={openModal} closeModal={() => setOpenModal(false)} propId={propId} />}
       </section>
 
       <ToastContainer

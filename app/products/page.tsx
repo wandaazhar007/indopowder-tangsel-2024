@@ -1,6 +1,5 @@
 'use client'
 import './productPage.scss';
-import '../components/products/products.scss';
 import { useState, useEffect, useContext } from 'react';
 import SearchProduct from '../components/searchProduct/SearchProduct';
 import ProductItem from '../components/productItem/ProductItem';
@@ -54,7 +53,7 @@ const productsPage = () => {
 
   return (
     <>
-      <section className="products">
+      <section className="productsPage">
         <div className="wrapContainer">
           <SearchProduct keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} />
           <h4>{keywordSearch}</h4>

@@ -56,7 +56,7 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick }: Produ
     //   {cart.items?.quantity > 0 ? 'test' : <button className="buttonAddToCart" onClick={() => handleClick(id, name, price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>}
     // </div> */}
 
-      <div className="boxProductsItem" key={id}>
+      <div className="boxProductsItemPage" key={id}>
         <div className="imageProduct" onClick={() => handleModal(id)}>
           <Image src={urlImage} width={300} height={300} alt='indopowder tangsel' />
         </div>

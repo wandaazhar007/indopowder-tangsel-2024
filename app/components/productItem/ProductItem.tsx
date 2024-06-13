@@ -8,8 +8,9 @@ import { CartContext } from '@/app/context/CartContex';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
+import ProductSingleModal from '../productSingleModal/ProductSingleModal';
 
-const ProductItem = ({ id, name, category, price, urlImage, handleClick }: ProductsType) => {
+const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleModal }: ProductsType) => {
 
   const [openModal, setOpenModal] = useState(false);
   // const [products, setProducts] = useState([]);
@@ -42,17 +43,6 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick }: Produ
   }
   return (
     <>
-      {/* // <div className="boxProductsItemPage">
-    //   <div className="imageProduct">
-    //     <Image src={urlImage} width={300} height={300} alt='indopowder tangsel' />
-    //   </div>
-    //   <hr />
-    //   <p className="category">{category}</p>
-    //   <h1 className="title">{name}</h1>
-    //   <p className="price">Rp. {price},-</p>
-    //   {cart.items?.quantity > 0 ? 'test' : <button className="buttonAddToCart" onClick={() => handleClick(id, name, price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>}
-    // </div> */}
-
       <div className="boxProductsItemPage" key={id}>
         <div className="imageProduct" onClick={() => handleModal(id)}>
           <Image src={urlImage} width={300} height={300} alt='indopowder tangsel' />
@@ -62,20 +52,21 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick }: Produ
         <h1 className="title" onClick={() => handleModal(id)}>{name}</h1>
         <p className="price">Rp. {price},-</p>
         <button className="buttonAddToCart" onClick={() => handleClick2(id, name, price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
+        <ToastContainer
+          position="bottom-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          className="toastNotify"
+        />
       </div>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-        className="toastNotify"
-      />
+
     </>
   );
 }

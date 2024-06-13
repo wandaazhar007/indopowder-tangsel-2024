@@ -57,7 +57,7 @@ const productsPage = () => {
         <div className="wrapContainer">
           <SearchProduct keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} />
           <h4>{keywordSearch}</h4>
-          <div className="boxProducts">
+          <div className="boxProductsPage">
             {products.map((product: ProductsType) => (
               <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} handleClick={handleClick} />
               // <ProductItem key={product.id} products={products} />

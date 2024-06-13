@@ -1,7 +1,4 @@
-// import './productItem.scss';
-import '../products/products.scss';
-import '../../components/products/products.scss';
-import '../products/products.scss';
+import './productItem.scss';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
@@ -61,7 +58,7 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick }: Produ
           <Image src={urlImage} width={300} height={300} alt='indopowder tangsel' />
         </div>
         <hr />
-        <p className="category">{name}</p>
+        <p className="category">{category}</p>
         <h1 className="title" onClick={() => handleModal(id)}>{name}</h1>
         <p className="price">Rp. {price},-</p>
         <button className="buttonAddToCart" onClick={() => handleClick2(id, name, price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>

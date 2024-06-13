@@ -8,76 +8,77 @@ Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink
 @import '../../styles/responsive.scss';
 @import '../../styles/variable.scss';
 
-.boxProductsPage {
+// .boxProductsPage {
 
 
-  .boxProductsItemPage {
-    // height: 25rem;
-    width: 20rem;
-    // border: .1rem solid salmon;
-    background: #fff;
-    // box-shadow: $boxShadowPrimary;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: .3rem;
+.boxProductsItemPage {
+  // height: 25rem;
+  width: 20rem;
+  // border: .1rem solid salmon;
+  background: #fff;
+  // box-shadow: $boxShadowPrimary;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  overflow: hidden;
+  color: #0b5186;
+  padding: 1rem;
+
+  @media (max-width: 405px) {
+    // height: 20rem;
+    width: 17rem;
+  }
+
+  .imageProduct {
+    // padding: 1rem;
+    border-radius: .5rem;
     overflow: hidden;
-    color: #0b5186;
-    padding: 1rem;
+    width: 18rem;
+    height: 18rem;
+    // position: relative;
 
     @media (max-width: 405px) {
-      // height: 20rem;
-      width: 17rem;
+      width: 15rem;
     }
 
-    .imageProduct {
-      // padding: 1rem;
-      border-radius: .5rem;
-      overflow: hidden;
-      width: 18rem;
-      height: 18rem;
-      // position: relative;
-
-      @media (max-width: 405px) {
-        width: 15rem;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-
-    hr {
-      margin-top: 1rem;
-      opacity: .2;
-      // color: #f0f0f0;
-      border: dotted .2rem;
-
-    }
-
-    .category {
-      margin-top: 1rem;
-      font-size: 1.4rem;
-    }
-
-    .title {
-      font-size: 1.4rem;
-
-    }
-
-    .price {
-      font-size: 1.4rem;
-    }
-
-    .buttonAddToCart {
-      margin-top: 2rem;
-      font-size: 1.6rem;
-      cursor: pointer;
-      border: transparent;
-      padding: .5rem;
-      color: #0b5186;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
+
+  hr {
+    margin-top: 1rem;
+    opacity: .2;
+    // color: #f0f0f0;
+    border: dotted .2rem;
+
+  }
+
+  .category {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+
+  }
+
+  .price {
+    font-size: 1.4rem;
+  }
+
+  .buttonAddToCart {
+    margin-top: 2rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border: transparent;
+    padding: .5rem;
+    color: #0b5186;
+  }
 }
+
+// }

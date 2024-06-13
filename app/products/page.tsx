@@ -1,5 +1,6 @@
 'use client'
 import './productPage.scss';
+import '../components/products/products.scss';
 import { useState, useEffect, useContext } from 'react';
 import SearchProduct from '../components/searchProduct/SearchProduct';
 import ProductItem from '../components/productItem/ProductItem';
@@ -53,11 +54,11 @@ const productsPage = () => {
 
   return (
     <>
-      <section className="productsPage">
+      <section className="products">
         <div className="wrapContainer">
           <SearchProduct keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} />
           <h4>{keywordSearch}</h4>
-          <div className="boxProductsPage">
+          <div className="boxProducts">
             {products.map((product: ProductsType) => (
               <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} handleClick={handleClick} />
               // <ProductItem key={product.id} products={products} />

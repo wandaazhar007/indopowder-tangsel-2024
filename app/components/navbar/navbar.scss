@@ -40,7 +40,7 @@ Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink
         .title {
           h2 {
             font-size: 2rem;
-            color: #0B5288;
+            color: $darkBlue;
           }
         }
       }
@@ -81,7 +81,7 @@ Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink
           // border: .1rem solid salmon;
           padding: 2rem;
           border-radius: 2rem;
-          background-color: #CADBED;
+          background-color: $lightBlue;
           // box-shadow: $boxShadowPrimary;
           // box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
@@ -98,15 +98,11 @@ Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink
               a {
                 font-size: 1.6rem;
                 text-decoration: none;
-                color: #0B5288;
-
-                // @include tablet {
-                //   color: white;
-                // }
+                color: $darkBlue;
               }
 
               a.on {
-                color: #0B5288;
+                color: $darkBlue;
                 position: relative;
                 font-weight: 700;
 
@@ -114,9 +110,8 @@ Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink
                   content: '';
                   height: .5rem;
                   width: 100%;
-                  background-color: #0B5288;
+                  background-color: $darkBlue;
                   border-radius: .2rem;
-                  // color: #0B5288;
                   position: absolute;
                   left: 0;
                   bottom: -1rem;
@@ -175,7 +170,7 @@ Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink
                 // border: .01rem solid #099739;
                 cursor: pointer;
                 background-color: #CADBED;
-                color: #0B5288;
+                color: $darkBlue;
                 // box-shadow: $boxShadowPrimary;
 
                 .icon {

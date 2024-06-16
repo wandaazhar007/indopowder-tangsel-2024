@@ -7,7 +7,8 @@ export type ProductsType = {
   handleClick: any,
   quantity: any,
   filter: any,
-  handleModal: any
+  handleModal: any,
+  isLoading: boolean
 }
 
 export type ContexValueType = {

@@ -10,12 +10,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import ProductSingleModal from '../productSingleModal/ProductSingleModal';
 
-const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleModal }: ProductsType) => {
+const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleModal, isLoading }: ProductsType) => {
 
   const [openModal, setOpenModal] = useState(false);
   // const [products, setProducts] = useState([]);
   const [propId, setPropId] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const cart = useContext(CartContext);
 
   const handleClick2 = (id: number, nameProduct: string, price: number) => {

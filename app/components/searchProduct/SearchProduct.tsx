@@ -4,13 +4,14 @@ import axios from 'axios';
 
 type Search = {
   keywordSearch: string,
-  setKeywordSearch: any
+  setKeywordSearch: any,
+  setIsLoading: any
 }
 
-const SearchProduct = ({ keywordSearch, setKeywordSearch }: Search) => {
+const SearchProduct = ({ keywordSearch, setKeywordSearch, setIsLoading }: Search) => {
 
   const [querySearch, setQuerySearch] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [results, setResult] = useState([]);
 
   const getSearch = async () => {

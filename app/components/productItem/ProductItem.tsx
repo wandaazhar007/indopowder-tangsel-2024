@@ -53,7 +53,7 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleM
           </div>
           <hr />
           <p className="category"></p>
-          <h1 className="title"></h1>
+          <h1 className="title">true</h1>
           <p className="price"></p>
           <button className="buttonAddToCart"></button>
         </div>

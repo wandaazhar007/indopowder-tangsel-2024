@@ -18,6 +18,7 @@ const productsPage = () => {
   const [limit, setLimit] = useState(12);
   const [propId, setPropId] = useState(0);
   const [openModal, setOpenModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getProducts = async () => {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_SEARCH}?search_query=${keywordSearch}&page=${page}&limit=${limit}`);
@@ -63,11 +64,11 @@ const productsPage = () => {
     <>
       <section className="productsPage">
         <div className="wrapContainer">
-          <SearchProduct keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} />
+          <SearchProduct keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} setIsLoading={setIsLoading} />
           <h4>{keywordSearch}</h4>
           <div className="boxProductsPage">
             {products.map((product: ProductsType) => (
-              <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} handleClick={handleClick} handleModal={handleModal} />
+              <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} isLoading={isLoading} handleClick={handleClick} handleModal={handleModal} />
               // <ProductItem key={product.id} products={products} />
             ))}
           </div>

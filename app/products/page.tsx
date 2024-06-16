@@ -20,7 +20,7 @@ const productsPage = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const getProducts = async () => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?search_query=${keywordSearch}&page=${page}&limit=${limit}`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_SEARCH}?search_query=${keywordSearch}&page=${page}&limit=${limit}`);
     setProducts(response.data.result);
     // console.log(response.data.result);
   }

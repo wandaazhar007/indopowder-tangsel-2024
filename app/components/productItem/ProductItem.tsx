@@ -15,7 +15,9 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleM
   const [openModal, setOpenModal] = useState(false);
   // const [products, setProducts] = useState([]);
   const [propId, setPropId] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const cart = useContext(CartContext);
+
   const handleClick2 = (id: number, nameProduct: string, price: number) => {
     cart.addOneToCart(id, nameProduct, price);
     notify();
@@ -43,16 +45,35 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleM
   }
   return (
     <>
-      <div className="boxProductsItemPage" key={id}>
-        <div className="imageProduct" onClick={() => handleModal(id)}>
-          <Image src={urlImage} width={300} height={300} alt='indopowder tangsel' />
+
+      {isLoading && (
+        <div className="boxProductsItemPage">
+          <div className="imageProduct">
+            <Image src="" width={300} height={300} alt='indopowder tangsel' />
+          </div>
+          <hr />
+          <p className="category"></p>
+          <h1 className="title"></h1>
+          <p className="price"></p>
+          <button className="buttonAddToCart"></button>
         </div>
-        <hr />
-        <p className="category">{category}</p>
-        <h1 className="title" onClick={() => handleModal(id)}>{name}</h1>
-        <p className="price">Rp. {price},-</p>
-        <button className="buttonAddToCart" onClick={() => handleClick2(id, name, price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
-      </div>
+      )}
+
+      {!isLoading && (
+        <div className="boxProductsItemPage" key={id}>
+          <div className="imageProduct" onClick={() => handleModal(id)}>
+            <Image src={urlImage} width={300} height={300} alt='indopowder tangsel' />
+          </div>
+          <hr />
+          <p className="category">{category}</p>
+          <h1 className="title" onClick={() => handleModal(id)}>{name}</h1>
+          <p className="price">Rp. {price},-</p>
+          <button className="buttonAddToCart" onClick={() => handleClick2(id, name, price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
+        </div>
+      )}
+
+
+
 
     </>
   );

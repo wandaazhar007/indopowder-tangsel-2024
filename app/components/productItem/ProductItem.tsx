@@ -9,14 +9,18 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import ProductSingleModal from '../productSingleModal/ProductSingleModal';
+import { SearchContext } from '@/app/context/SearchContext';
 
-const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleModal, isLoading }: ProductsType) => {
+const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleModal, isLoading, keywordSearch, setKeywordSearch }: ProductsType) => {
 
   const [openModal, setOpenModal] = useState(false);
   // const [products, setProducts] = useState([]);
   const [propId, setPropId] = useState(0);
   // const [isLoading, setIsLoading] = useState(false);
+  // const [keywordSearch, setKeywordSearch] = useState('')
   const cart = useContext(CartContext);
+  const searchContext: any = useContext(SearchContext);
+  const querySearch = searchContext.querySearch;
 
   const handleClick2 = (id: number, nameProduct: string, price: number) => {
     cart.addOneToCart(id, nameProduct, price);
@@ -45,8 +49,7 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleM
   }
   return (
     <>
-
-      {isLoading && (
+      {/* {isLoading && (
         <div className="boxProductsItemPage">
           <div className="imageProduct">
             <Image src="" width={300} height={300} alt='indopowder tangsel' />
@@ -57,9 +60,10 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleM
           <p className="price"></p>
           <button className="buttonAddToCart"></button>
         </div>
-      )}
+      )} */}
 
-      {!isLoading && (
+
+      {!querySearch ? (
         <div className="boxProductsItemPage" key={id}>
           <div className="imageProduct" onClick={() => handleModal(id)}>
             <Image src={urlImage} width={300} height={300} alt='indopowder tangsel' />
@@ -70,11 +74,7 @@ const ProductItem = ({ id, name, category, price, urlImage, handleClick, handleM
           <p className="price">Rp. {price},-</p>
           <button className="buttonAddToCart" onClick={() => handleClick2(id, name, price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
         </div>
-      )}
-
-
-
-
+      ) : 'test'}
     </>
   );
 }

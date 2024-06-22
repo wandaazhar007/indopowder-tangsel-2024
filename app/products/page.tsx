@@ -68,7 +68,7 @@ const productsPage = () => {
           <h4>{keywordSearch}</h4>
           <div className="boxProductsPage">
             {products.map((product: ProductsType) => (
-              <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} isLoading={isLoading} handleClick={handleClick} handleModal={handleModal} />
+              <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} isLoading={isLoading} handleClick={handleClick} handleModal={handleModal} keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} />
               // <ProductItem key={product.id} products={products} />
             ))}
           </div>

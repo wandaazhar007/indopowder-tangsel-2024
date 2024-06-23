@@ -32,6 +32,7 @@ const SearchProduct = ({ keywordSearch, setKeywordSearch, setIsLoading }: Search
     <>
       <section className="searchProduct">
         <input type="text" placeholder='Search products here...' value={keywordSearch} onChange={handleSearch} />
+        <h1>{keywordSearch}</h1>
         <div className="btnFilter">
           <button> Bubuk Minuman</button>
           <button> Topping</button>

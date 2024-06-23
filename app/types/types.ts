@@ -5,8 +5,8 @@ export type ProductsType = {
   price: number,
   urlImage: string,
   handleClick: any,
-  quantity: any,
-  filter: any,
+  // quantity: any,
+  // filter: any,
   handleModal: any,
   isLoading: boolean
 }

@@ -10,9 +10,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import { CartContext } from '../context/CartContex';
 import ProductSingleModal from '../components/productSingleModal/ProductSingleModal';
+// import { SearchContext } from '../context/SearchContext';
 
 const productsPage = () => {
   const [products, setProducts] = useState([]);
+  // const searchContext: any = useContext(SearchContext);
+  // const keywordSearch = searchContext.querySearch;
+  // const setKeywordSearch = searchContext.setQuerySearch;
   const [keywordSearch, setKeywordSearch] = useState("");
   const [page, setPage] = useState("");
   const [limit, setLimit] = useState(12);
@@ -65,10 +69,9 @@ const productsPage = () => {
       <section className="productsPage">
         <div className="wrapContainer">
           <SearchProduct keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} setIsLoading={setIsLoading} />
-          <h4>{keywordSearch}</h4>
           <div className="boxProductsPage">
             {products.map((product: ProductsType) => (
-              <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} isLoading={isLoading} handleClick={handleClick} handleModal={handleModal} keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} />
+              <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} isLoading={isLoading} handleClick={handleClick} handleModal={handleModal} />
               // <ProductItem key={product.id} products={products} />
             ))}
           </div>

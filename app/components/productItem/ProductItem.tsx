@@ -61,6 +61,7 @@ const ProductItem = ({ id, name, category, price, urlImage, handleModal, isLoadi
               <button className="buttonAddToCart" onClick={() => handleClick2(id, name, price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
             </div>
           }
+
         </>
         ) : ''}
     </>

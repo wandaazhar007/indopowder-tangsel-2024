@@ -21,6 +21,7 @@ const Products = () => {
   const getProducts = async () => {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?limit=12`)
     setProducts(response.data.result);
+    console.log(response.data.result);
   }
 
   useEffect(() => {
@@ -65,7 +66,7 @@ const Products = () => {
                   <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
                 </div>
                 <hr />
-                <p className="category">{product.category.name}</p>
+                <p className="category">{product.category.name} {product.id}</p>
                 <h1 className="title" onClick={() => handleModal(product.id)}>{product.name}</h1>
                 <p className="price">Rp. {product.price},-</p>
                 <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>

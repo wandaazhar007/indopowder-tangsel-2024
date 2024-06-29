@@ -74,6 +74,10 @@ const productsPage = () => {
               <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} isLoading={isLoading} handleClick={handleClick} handleModal={handleModal} />
               // <ProductItem key={product.id} products={products} />
             ))}
+
+            <div className="loadMoreProducts">
+              <button className="btnLoadMoreProducts">Load More</button>
+            </div>
           </div>
         </div>
 

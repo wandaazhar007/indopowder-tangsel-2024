@@ -3,14 +3,21 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { ProductsType } from '@/app/types/types';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '@/app/context/CartContex';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SearchContext } from '@/app/context/SearchContext';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const ProductList = ({ id, name, category, price, urlImage, handleModal, isLoading }: ProductsType) => {
 
+  const [lastId, setLastId] = useState(0);
+  const [tempId, setTempId] = useState(0);
+  const [limit, setLimit] = useState(20);
+  const [keyword, setKeyword] = useState("");
+  const [query, setQuery] = useState("");
+  const [hasMore, setHasMore] = useState(true);
   const cart = useContext(CartContext);
   const searchContext: any = useContext(SearchContext);
   const querySearch = searchContext.querySearch;
@@ -19,6 +26,11 @@ const ProductList = ({ id, name, category, price, urlImage, handleModal, isLoadi
     cart.addOneToCart(id, nameProduct, price);
     notify();
   }
+
+  useEffect(() => {
+    // getUsers();
+    // console.log(process.env.REACT_APP_ALL_USERS)
+  }, [lastId, keyword]);
 
   const notify = () => {
     toast.success('Item has been added in the cart!', {
@@ -32,6 +44,7 @@ const ProductList = ({ id, name, category, price, urlImage, handleModal, isLoadi
       theme: "light",
     });
   }
+
   return (
     <>
       {!querySearch ?
@@ -39,7 +52,6 @@ const ProductList = ({ id, name, category, price, urlImage, handleModal, isLoadi
           {isLoading &&
             <div className="boxProductsList">
               <div className="skeleton imageProductSkeleton">
-                {/* <Image src="" width={300} height={300} alt='indopowder tangsel' /> */}
               </div>
               <hr />
               <p className="skeleton categorySkeleton"></p>

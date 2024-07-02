@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image';
 import './productListSection.scss';
+import '../productList/productList.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare, faCartArrowDown, faLongArrowDown } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
@@ -24,20 +25,23 @@ const ProductListSection = () => {
   const [keyword, setKeyword] = useState("");
   const [query, setQuery] = useState("");
   const [hasMore, setHasMore] = useState(true);
-
-  const [displayedData, setDisplayedData] = useState([]);
-  const [visibleItemCount, setVisibleItemCount] = useState(4);
+  const [isLoading, setIsLoading] = useState(false);
+  const [visibleItemCount, setVisibleItemCount] = useState(6);
 
   const getProducts = async () => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?limit=12`)
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?limit=20`)
     setProducts(response.data.result);
     // console.log(response.data.result);
   }
 
   const handleLoadMore = () => {
-    setVisibleItemCount(prevCount => prevCount + 4);
     // setDisplayedData(products.slice(0, visibleItemCount + 4));
-    console.log(products)
+    setIsLoading(true);
+    setTimeout(() => {
+      setVisibleItemCount(prevCount => prevCount + 4);
+      setIsLoading(false);
+    }, 700)
+    console.log(visibleItemCount)
   };
 
   // const getProductInfinite = async () => {
@@ -108,36 +112,43 @@ const ProductListSection = () => {
         <div className="boxProducts">
           {products.slice(0, visibleItemCount).map((product: ProductsType) => (
             <>
-              <div className="boxProductsItem" key={product.id}>
-                <div className="imageProduct" onClick={() => handleModal(product.id)}>
-                  <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
+              {isLoading ? (
+                <div className="boxProductsList">
+                  <div className="skeleton imageProductSkeleton">
+                  </div>
+                  <hr />
+                  <p className="skeleton categorySkeleton"></p>
+                  <h1 className="skeleton titleSkeleton"></h1>
+                  <p className="skeleton priceSkeleton"></p>
+                  <button className="skeleton buttonAddToCartSkeleton" ></button>
                 </div>
-                <hr />
-                <p className="category">{product.category.name}</p>
-                <h1 className="title" onClick={() => handleModal(product.id)}>{product.name}</h1>
-                <p className="price">Rp. {product.price},-</p>
-                <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
-              </div>
+              ) : (
+                <div className="boxProductsItem" key={product.id}>
+                  <div className="imageProduct" onClick={() => handleModal(product.id)}>
+                    <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
+                  </div>
+                  <hr />
+                  <p className="category">{product.category.name}</p>
+                  <h1 className="title" onClick={() => handleModal(product.id)}>{product.name}</h1>
+                  <p className="price">Rp. {product.price},-</p>
+                  <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
+                </div>
+              )}
             </>
           ))}
-          {/* {displayedData.map((product: ProductsType) => (
-            <>
-              <div className="boxProductsItem" key={product.id}>
-                <div className="imageProduct" onClick={() => handleModal(product.id)}>
-                  <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
-                </div>
-                <hr />
-                <p className="category">{product.category.name}</p>
-                <h1 className="title" onClick={() => handleModal(product.id)}>{product.name}</h1>
-                <p className="price">Rp. {product.price},-</p>
-                <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
-              </div>
-            </>
-          ))} */}
 
         </div>
         {/* <button className="linkProducts"><Link href="/products"><FontAwesomeIcon icon={faArrowUpRightFromSquare} className='icon' /> View More Products</Link></button> */}
-        <button className="linkProducts" onClick={handleLoadMore}><FontAwesomeIcon icon={faLongArrowDown} className='icon' /> Load More</button>
+        {visibleItemCount === 20 ? (
+          <button className="linkProducts"><Link href="/products"><FontAwesomeIcon icon={faArrowUpRightFromSquare} className='icon' /> Products Page</Link></button>
+        ) : (
+          <button className="linkProducts" onClick={handleLoadMore}>
+            {isLoading ? 'Loading...' : <><FontAwesomeIcon icon={faLongArrowDown} className='icon' /> Load More</>}
+          </button>
+        )}
+        {/* <button className="linkProducts" onClick={handleLoadMore}>
+          {isLoading ? 'Loading...' : <><FontAwesomeIcon icon={faLongArrowDown} className='icon' /> Load More</>}
+        </button> */}
       </div>
       {/* </InfiniteScroll> */}
 

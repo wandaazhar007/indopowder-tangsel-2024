@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import './productListSection.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare, faCartArrowDown, faLongArrowDown } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import axios from 'axios';
 import { useEffect, useState, useContext } from 'react';
@@ -25,11 +25,23 @@ const ProductListSection = () => {
   const [query, setQuery] = useState("");
   const [hasMore, setHasMore] = useState(true);
 
+  const [displayedData, setDisplayedData] = useState([]);
+  const [visibleItemCount, setVisibleItemCount] = useState(4);
+
   const getProducts = async () => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?limit=12`)
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?limit=20`)
     setProducts(response.data.result);
-    console.log(response.data.result);
+    // console.log(response.data.result);
   }
+
+  const handleLoadMore = () => {
+    // Increase the visible item count (you can adjust this logic based on your requirements)
+    setVisibleItemCount(prevCount => prevCount + 4);
+
+    // Update displayedData with additional items
+    setDisplayedData(products.slice(0, visibleItemCount + 4));
+    console.log(products)
+  };
 
   // const getProductInfinite = async () => {
   //   const response = await axios.get(`${}?search_query=${keyword}&lasiId=${lastId}&limit=${limit}`);
@@ -55,6 +67,7 @@ const ProductListSection = () => {
 
   useEffect(() => {
     getProducts();
+    // console.log(products)
     // getProductInfinite();
   }, []);
 
@@ -96,14 +109,14 @@ const ProductListSection = () => {
 
       <div className="wrapContainer">
         <div className="boxProducts">
-          {products.map((product: ProductsType) => (
+          {displayedData.map((product: ProductsType) => (
             <>
               <div className="boxProductsItem" key={product.id}>
                 <div className="imageProduct" onClick={() => handleModal(product.id)}>
                   <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
                 </div>
                 <hr />
-                <p className="category">{product.category.name} {product.id}</p>
+                <p className="category">{product.category.name}</p>
                 <h1 className="title" onClick={() => handleModal(product.id)}>{product.name}</h1>
                 <p className="price">Rp. {product.price},-</p>
                 <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
@@ -113,7 +126,8 @@ const ProductListSection = () => {
           {/* </InfiniteScroll> */}
 
         </div>
-        <button className="linkProducts"><Link href="/products"><FontAwesomeIcon icon={faArrowUpRightFromSquare} className='icon' /> View More Products</Link></button>
+        {/* <button className="linkProducts"><Link href="/products"><FontAwesomeIcon icon={faArrowUpRightFromSquare} className='icon' /> View More Products</Link></button> */}
+        <button className="linkProducts" onClick={handleLoadMore}><FontAwesomeIcon icon={faLongArrowDown} className='icon' /> Load More</button>
       </div>
 
       <ToastContainer

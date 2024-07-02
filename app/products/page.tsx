@@ -2,7 +2,7 @@
 import './productPage.scss';
 import { useState, useEffect, useContext } from 'react';
 import SearchProduct from '../components/searchProduct/SearchProduct';
-import ProductItem from '../components/productItem/ProductItem';
+// import ProductItem from '../components/productItem/ProductItem';
 import axios from 'axios';
 import { ProductsType } from '../types/types';
 import { toast } from 'react-toastify';
@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import { CartContext } from '../context/CartContex';
 import ProductSingleModal from '../components/productSingleModal/ProductSingleModal';
+import ProductList from '../components/productList/ProductList';
 // import { SearchContext } from '../context/SearchContext';
 
 const productsPage = () => {
@@ -71,7 +72,7 @@ const productsPage = () => {
           <SearchProduct keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} setIsLoading={setIsLoading} />
           <div className="boxProductsPage">
             {products.map((product: ProductsType) => (
-              <ProductItem key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} isLoading={isLoading} handleClick={handleClick} handleModal={handleModal} />
+              <ProductList key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} isLoading={isLoading} handleClick={handleClick} handleModal={handleModal} />
               // <ProductItem key={product.id} products={products} />
             ))}
           </div>

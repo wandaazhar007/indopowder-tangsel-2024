@@ -1,16 +1,23 @@
-import './productItem.scss';
+import './productList.scss';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { ProductsType } from '@/app/types/types';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '@/app/context/CartContex';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SearchContext } from '@/app/context/SearchContext';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-const ProductItem = ({ id, name, category, price, urlImage, handleModal, isLoading }: ProductsType) => {
+const ProductList = ({ id, name, category, price, urlImage, handleModal, isLoading }: ProductsType) => {
 
+  const [lastId, setLastId] = useState(0);
+  const [tempId, setTempId] = useState(0);
+  const [limit, setLimit] = useState(20);
+  const [keyword, setKeyword] = useState("");
+  const [query, setQuery] = useState("");
+  const [hasMore, setHasMore] = useState(true);
   const cart = useContext(CartContext);
   const searchContext: any = useContext(SearchContext);
   const querySearch = searchContext.querySearch;
@@ -19,6 +26,11 @@ const ProductItem = ({ id, name, category, price, urlImage, handleModal, isLoadi
     cart.addOneToCart(id, nameProduct, price);
     notify();
   }
+
+  useEffect(() => {
+    // getUsers();
+    // console.log(process.env.REACT_APP_ALL_USERS)
+  }, [lastId, keyword]);
 
   const notify = () => {
     toast.success('Item has been added in the cart!', {
@@ -32,14 +44,14 @@ const ProductItem = ({ id, name, category, price, urlImage, handleModal, isLoadi
       theme: "light",
     });
   }
+
   return (
     <>
       {!querySearch ?
         (<>
           {isLoading &&
-            <div className="boxProductsItemPage">
+            <div className="boxProductsList">
               <div className="skeleton imageProductSkeleton">
-                {/* <Image src="" width={300} height={300} alt='indopowder tangsel' /> */}
               </div>
               <hr />
               <p className="skeleton categorySkeleton"></p>
@@ -50,7 +62,7 @@ const ProductItem = ({ id, name, category, price, urlImage, handleModal, isLoadi
           }
 
           {!isLoading &&
-            <div className="boxProductsItemPage" key={id}>
+            <div className="boxProductsList" key={id}>
               <div className="imageProduct" onClick={() => handleModal(id)}>
                 <Image src={urlImage} width={300} height={300} alt='indopowder tangsel' />
               </div>
@@ -61,10 +73,11 @@ const ProductItem = ({ id, name, category, price, urlImage, handleModal, isLoadi
               <button className="buttonAddToCart" onClick={() => handleClick2(id, name, price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
             </div>
           }
+
         </>
         ) : ''}
     </>
   );
 }
 
-export default ProductItem;
+export default ProductList;

@@ -26,7 +26,7 @@ const ProductListSection = () => {
   const [query, setQuery] = useState("");
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [visibleItemCount, setVisibleItemCount] = useState(6);
+  const [visibleItemCount, setVisibleItemCount] = useState(4);
 
   const getProducts = async () => {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_PRODUCT_HOMEPAGE}?limit=20`)
@@ -112,6 +112,16 @@ const ProductListSection = () => {
         <div className="boxProducts">
           {products.slice(0, visibleItemCount).map((product: ProductsType) => (
             <>
+              <div className="boxProductsItem" key={product.id}>
+                <div className="imageProduct" onClick={() => handleModal(product.id)}>
+                  <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
+                </div>
+                <hr />
+                <p className="category">{product.category.name}</p>
+                <h1 className="title" onClick={() => handleModal(product.id)}>{product.name}</h1>
+                <p className="price">Rp. {product.price},-</p>
+                <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
+              </div>
               {isLoading ? (
                 <div className="boxProductsList">
                   <div className="skeleton imageProductSkeleton">
@@ -123,16 +133,17 @@ const ProductListSection = () => {
                   <button className="skeleton buttonAddToCartSkeleton" ></button>
                 </div>
               ) : (
-                <div className="boxProductsItem" key={product.id}>
-                  <div className="imageProduct" onClick={() => handleModal(product.id)}>
-                    <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
-                  </div>
-                  <hr />
-                  <p className="category">{product.category.name}</p>
-                  <h1 className="title" onClick={() => handleModal(product.id)}>{product.name}</h1>
-                  <p className="price">Rp. {product.price},-</p>
-                  <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
-                </div>
+                // <div className="boxProductsItem" key={product.id}>
+                //   <div className="imageProduct" onClick={() => handleModal(product.id)}>
+                //     <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
+                //   </div>
+                //   <hr />
+                //   <p className="category">{product.category.name}</p>
+                //   <h1 className="title" onClick={() => handleModal(product.id)}>{product.name}</h1>
+                //   <p className="price">Rp. {product.price},-</p>
+                //   <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
+                // </div>
+                ''
               )}
             </>
           ))}

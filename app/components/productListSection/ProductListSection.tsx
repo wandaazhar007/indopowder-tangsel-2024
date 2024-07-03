@@ -13,7 +13,7 @@ import { ToastContainer } from "react-toastify";
 import { CartContext } from '@/app/context/CartContex';
 import { ProductsType } from '@/app/types/types';
 import ProductSingleModal from '../productSingleModal/ProductSingleModal';
-import InfiniteScroll from 'react-infinite-scroll-component';
+// import InfiniteScroll from 'react-infinite-scroll-component';
 
 const ProductListSection = () => {
   const [openModal, setOpenModal] = useState(false);

@@ -1,4 +1,5 @@
 'use client'
+// eslint-disable react/no-unescaped-entities
 import './productPage.scss';
 import { useState, useEffect, useContext } from 'react';
 import SearchProduct from '../components/searchProduct/SearchProduct';
@@ -13,7 +14,7 @@ import ProductSingleModal from '../components/productSingleModal/ProductSingleMo
 import ProductList from '../components/productList/ProductList';
 // import { SearchContext } from '../context/SearchContext';
 
-const productsPage = () => {
+const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   // const searchContext: any = useContext(SearchContext);
   // const keywordSearch = searchContext.querySearch;
@@ -72,7 +73,7 @@ const productsPage = () => {
           <SearchProduct keywordSearch={keywordSearch} setKeywordSearch={setKeywordSearch} setIsLoading={setIsLoading} />
           <div className="boxProductsPage">
             {products.map((product: ProductsType) => (
-              <ProductList key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} urlImage={product.urlImage} isLoading={isLoading} handleClick={handleClick} handleModal={handleModal} />
+              <ProductList key={product.id} id={product.id} name={product.name} category={product.category.name} price={product.price} quantity={product.quantity} urlImage={product.urlImage} isLoading={isLoading} handleClick={handleClick} handleModal={handleModal} />
               // <ProductItem key={product.id} products={products} />
             ))}
           </div>
@@ -99,4 +100,4 @@ const productsPage = () => {
   );
 }
 
-export default productsPage;
+export default ProductsPage;

@@ -12,10 +12,10 @@ const ContactPage = () => {
         <div className="row1">
           <div className="colLeftRow1">
             <h1>Kami Disini untuk wujudkan bisnis Anda...!</h1>
-            <p>We'd love to hear from you! Whether you have a question, want to book a table, or simply crave a sizzling hibachi experience.</p>
+            <p>We&apos;d love to hear from you! Whether you have a question, want to book a table, or simply crave a sizzling hibachi experience.</p>
           </div>
           <div className="colRightRow1">
-            <h1>Let's Talk.</h1>
+            <h1>Let&apos;s Talk.</h1>
             <p>Have a question or want to make a reservation? Give us a call and our friendly staff will be delighted to assist you.</p>
             <button><FontAwesomeIcon icon={faPhone} className='icon' /> Call Us</button>
           </div>

@@ -9,12 +9,14 @@ export type ProductsType = {
   // filter: any,
   handleModal: any,
   isLoading: boolean
+  quantity: number;
 }
 
 export type ContexValueType = {
   items: [],
   getProductQuantity: any,
-  addOneToCart: (number: any) => void,
+  // addOneToCart: (number: any) => void,
+  addOneToCart: (id: number, name: string, price: number) => void;
   removeOneFromCart: (number: any) => void,
   deleteFromCart: (number: any) => void,
   getTotalCost: any

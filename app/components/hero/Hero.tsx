@@ -5,6 +5,7 @@ import { faPhone, faStar } from '@fortawesome/free-solid-svg-icons';
 import Lottie from "lottie-react";
 import boba1 from "../../../public/assets/animation/boba1.json";
 import boba2 from "../../../public/assets/animation/boba2.json";
+import Image from 'next/image';
 
 const Hero: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Hero: React.FC = () => {
         <div className="boxPrimary">
           <div className="colLeft">
             <h1>Bubuk Minuman Premium untuk Bisnis Anda</h1>
-            <h3>Dapatkan rasa yang luar biasa dalam setiap gelas minuman. Kami adalah pilihan utama untuk bisnis minuman Anda."</h3>
+            <h3>Dapatkan rasa yang luar biasa dalam setiap gelas minuman. Kami adalah pilihan utama untuk bisnis minuman Anda.&apos;</h3>
             <div className="rating">
               <FontAwesomeIcon icon={faStar} className="icon" />
               <FontAwesomeIcon icon={faStar} className="icon" />
@@ -36,10 +37,10 @@ const Hero: React.FC = () => {
             </div>
             <div className="boxRight boxRight4">
               <a href="#">
-                <img src='./assets/images/tokopedia-indopowder-tangsel-v2.png' />
+                <Image src='/assets/images/tokopedia-indopowder-tangsel-v2.png' width={300} height={40} alt='Indopowder Tangsel' />
               </a>
               <a href="#">
-                <img src='./assets/images/shopee-indopowder-tangsel-v2.png' />
+                <Image src='/assets/images/shopee-indopowder-tangsel-v2.png' width={300} height={40} alt='Indopowder Tangsel' />
               </a>
             </div>
             {/* <div className="boxRight boxRight5">

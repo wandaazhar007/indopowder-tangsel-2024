@@ -14,7 +14,8 @@ export const CartContext = createContext({
 export function CartProvider({ children }: any) {
   let cartFromLocalStorage = [];
   if (typeof window !== 'undefined') {
-    cartFromLocalStorage = JSON.parse(localStorage.getItem('cart_kansha' || []));
+    const storedCart = localStorage.getItem('cart_kansha');
+    cartFromLocalStorage = storedCart ? JSON.parse(storedCart) : [];
 
   }
   const [cartProducts, setCartProducts] = useState(cartFromLocalStorage || []);
@@ -61,9 +62,10 @@ export function CartProvider({ children }: any) {
   }
 
   function deleteFromCart(id: number) {
-    setCartProducts((cartProducts: ProductsType) => cartProducts.filter((currentProduct: ProductsType) => {
-      return currentProduct.id != id;
-    }))
+    // setCartProducts((cartProducts: ProductsType) => cartProducts.filter((currentProduct: ProductsType) => {
+    //   return currentProduct.id != id;
+    // }))
+    setCartProducts(cartProducts.filter((currentProduct: ProductsType) => currentProduct.id !== id));
   }
 
   function getTotalCost() {

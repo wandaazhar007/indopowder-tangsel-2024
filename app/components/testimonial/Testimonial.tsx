@@ -9,8 +9,8 @@ const Testimonial = () => {
       <div className="wrapContainer">
         <div className="boxTestimonial">
           <div className="header">
-            <h1>What does people says?</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nostrum libero dicta vitae, dolor laborum! Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <h1>Apa Kata Pelanggan Kami?</h1>
+            <p>Dengarkan cerita sukses dari pelanggan setia kami yang telah merasakan manfaat dari bubuk minuman premium kami..</p>
           </div>
           <div className="imagesTestimonial">
             <div className="boxGridItemImageTestimonial imageGrid1">
@@ -47,61 +47,61 @@ const Testimonial = () => {
           <div className="boxContentTestimonial">
             <div className="boxItemContentTestimonial testimonial1">
               <div className="groupBox">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, inventore?</p>
-                <h1>Yayan Suryana</h1>
+                <p>Indopowder membuat bisnis boba saya meningkat pesat! Rasa yang konsisten dan kualitas yang tinggi benar-benar membuat pelanggan saya ketagihan.</p>
+                <h1>Rina Susanti</h1>
               </div>
               <div className="groupBoxDesc">
-                <div className="desc">Lorem ipsum dolor sit amet.</div>
-                <div className="city">Kota Probolinggo</div>
+                <div className="desc">Penjual Boba</div>
+                <div className="city">Jakarta</div>
               </div>
             </div>
             <div className="boxItemContentTestimonial testimonial2">
               <div className="groupBox">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, inventore?</p>
-                <h1>Yayan Suryana</h1>
+                <p>Dengan Indopowder, saya bisa menciptakan berbagai minuman inovatif yang disukai pelanggan. Pengiriman cepat dan layanan yang luar biasa!</p>
+                <h1>Ahmad Setiawan</h1>
               </div>
               <div className="groupBoxDesc">
-                <div className="desc">Lorem ipsum dolor sit amet.</div>
-                <div className="city">Kota Probolinggo</div>
+                <div className="desc">Penjual Boba</div>
+                <div className="city">Kota Tangerang</div>
               </div>
             </div>
             <div className="boxItemContentTestimonial testimonial3">
               <div className="groupBox">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, inventore?</p>
-                <h1>Yayan Suryana</h1>
+                <p>Kami sangat puas dengan Indopowder. Rasa yang luar biasa dan harga yang terjangkau membuat produk ini menjadi pilihan utama kami</p>
+                <h1>Dwi Lestari</h1>
               </div>
               <div className="groupBoxDesc">
-                <div className="desc">Lorem ipsum dolor sit amet.</div>
-                <div className="city">Kota Probolinggo</div>
+                <div className="desc">Pemilik Cafe</div>
+                <div className="city">Kota Bekasi</div>
               </div>
             </div>
             <div className="boxItemContentTestimonial testimonial4">
               <div className="groupBox">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, inventore?</p>
-                <h1>Yayan Suryana</h1>
+                <p>Layanan pelanggan Indopowder sangat responsif dan membantu. Bubuk minuman mereka adalah yang terbaik di pasaran!</p>
+                <h1>Budi Santoso</h1>
               </div>
               <div className="groupBoxDesc">
-                <div className="desc">Lorem ipsum dolor sit amet.</div>
-                <div className="city">Kota Probolinggo</div>
+                <div className="desc">Penjual Minuman Aneka Rasa</div>
+                <div className="city">Kota Depok</div>
               </div>
             </div>
             <div className="boxItemContentTestimonial testimonial5">
               <div className="groupBox">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, inventore?</p>
-                <h1>Yayan Suryana</h1>
+                <p>Produk Indopowder selalu memenuhi standar kualitas kami. Sangat direkomendasikan untuk siapa saja yang ingin membuka bisnis minuman.</p>
+                <h1>Dani Arjuna</h1>
               </div>
               <div className="groupBoxDesc">
-                <div className="desc">Lorem ipsum dolor sit amet.</div>
-                <div className="city">Kota Probolinggo</div>
+                <div className="desc">Penjual Boba</div>
+                <div className="city">Kota Bogor</div>
               </div>
             </div>
             <div className="boxItemContentTestimonial testimonial6">
               <div className="groupBox">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, inventore?</p>
-                <h1>Yayan Suryana</h1>
+                <p>Indopowder menawarkan varian rasa yang sangat lengkap dan berkualitas tinggi. Pelanggan saya sangat menyukai rasa minuman yang kami sajikan.</p>
+                <h1>Felicia Anjani</h1>
               </div>
               <div className="groupBoxDesc">
-                <div className="desc">Lorem ipsum dolor sit amet.</div>
+                <div className="desc">Penjual Boba</div>
                 <div className="city">Kota Probolinggo</div>
               </div>
             </div>

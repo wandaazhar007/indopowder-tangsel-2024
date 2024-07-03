@@ -13,8 +13,8 @@ const Hero: React.FC = () => {
       <div className="wrapContainer">
         <div className="boxPrimary">
           <div className="colLeft">
-            <h1>Bubuk Minuman Premium untuk Bisnis Anda</h1>
-            <h3>Dapatkan rasa yang luar biasa dalam setiap gelas minuman. Kami adalah pilihan utama untuk bisnis minuman Anda.&apos;</h3>
+            <h1>Bubuk Minuman Premium untuk Kesuksesan Bisnis Anda</h1>
+            <h3>Rasakan kelezatan luar biasa di setiap tegukan. Indopowder adalah pilihan terbaik untuk minuman boba dan aneka rasa Anda. Tingkatkan penjualan dan buat pelanggan Anda ketagihan.&apos;</h3>
             <div className="rating">
               <FontAwesomeIcon icon={faStar} className="icon" />
               <FontAwesomeIcon icon={faStar} className="icon" />

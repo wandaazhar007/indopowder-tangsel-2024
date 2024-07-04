@@ -27,10 +27,12 @@ const Navbar: React.FC = () => {
       <div className="wrapContainer">
         <div className="headerContainer">
           <div className="colLeft">
-            <div className="logo">
-              <Image src="/assets/images/logo-indopodwer-tangsel.png" width={100} height={100} alt="Indopowder Tangsel Logo" />
-            </div>
-            <div className="title"><h2>Indopowder Tangsel</h2></div>
+            <Link href="/">
+              <div className="logo">
+                <Image src="/assets/images/logo-indopodwer-tangsel.png" width={100} height={100} alt="Indopowder Tangsel Logo" />
+              </div>
+              <div className="title"><h2>Indopowder Tangsel</h2></div>
+            </Link>
           </div>
 
           <div className={`colMid ${active ? 'on' : ''}`}>

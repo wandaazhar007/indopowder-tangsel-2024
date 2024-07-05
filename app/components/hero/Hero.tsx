@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
               <FontAwesomeIcon icon={faStar} className="icon" />
               <FontAwesomeIcon icon={faStar} className="icon" />
               <FontAwesomeIcon icon={faStar} className="icon" />
-              <p>Rating on google</p>
+              <p>Ratings on google</p>
             </div>
             <button className="btnCta"><FontAwesomeIcon icon={faPhone} />Konsultasi Gratis</button>
           </div>

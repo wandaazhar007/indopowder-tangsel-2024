@@ -30,10 +30,16 @@ const Hero: React.FC = () => {
               <h2>Indopowder Tangsel</h2>
             </div>
             <div className="boxRight boxRight2">
-              <Lottie animationData={boba1} loop={true} className='animationBoba1' />
+              <div className="imageWrapper">
+                <Image src="/assets/images/hero-indopowdertangsel-3.png" layout='fill' alt='indopowder tangsel' />
+              </div>
+              {/* <Lottie animationData={boba1} loop={true} className='animationBoba1' /> */}
             </div>
             <div className="boxRight boxRight3">
-              <Lottie animationData={boba2} loop={true} className='animationBoba2' />
+              <div className="imageWrapper">
+                <Image src="/assets/images/hero-indopowdertangsel-2.png" layout='fill' alt='indopowder tangsel' />
+              </div>
+              {/* <Lottie animationData={boba2} loop={true} className='animationBoba2' /> */}
             </div>
             <div className="boxRight boxRight4">
               <a href="#">

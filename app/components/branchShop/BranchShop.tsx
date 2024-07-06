@@ -43,7 +43,7 @@ const BranchShop = () => {
           </div>
           <div className="content">
             <h2>Indopowder Makassar 1</h2>
-            <p>Jl.Poros Patte'ne no 17, temmapadua'e</p>
+            <p>Jl.Poros Patte&apos;ne no 17, temmapadua&apos;e</p>
             <p>Marusu - Maros - Makassar</p>
             <p>No WA : 0813-4191-4546</p>
           </div>

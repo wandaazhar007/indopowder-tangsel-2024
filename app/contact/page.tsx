@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './contact.scss';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare';
@@ -17,7 +17,14 @@ const ContactPage = () => {
           <div className="colRightRow1">
             <h1>Let&apos;s Talk.</h1>
             <p>Have a question or want to make a reservation? Give us a call and our friendly staff will be delighted to assist you.</p>
-            <button><FontAwesomeIcon icon={faPhone} className='icon' /> Call Us</button>
+            <div className="buttonCall">
+              <Link href="tel:+621384509642" target="_blank" rel="noreferrer">
+                <button><FontAwesomeIcon icon={faPhone} className='icon' /> Call Us</button>
+              </Link>
+              <Link href="mailto:indopowder.tangsel@gmail.com" target="_blank" rel="noreferrer">
+                <button><FontAwesomeIcon icon={faEnvelope} className='icon' /> Email Us</button>
+              </Link>
+            </div>
           </div>
         </div>
 

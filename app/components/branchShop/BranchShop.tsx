@@ -2,7 +2,7 @@ import './branchShop.scss';
 const BranchShop = () => {
   return (
     <section className="branchShop" id="branchShop">
-      <h1 className="heading"> Toko <span>Cabang</span> </h1>
+      <h1 className="heading"> Toko <span>Cabang</span> Kami </h1>
       <div className="boxContainer">
         <div className="box">
           <div className="content">

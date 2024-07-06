@@ -32,7 +32,7 @@ const Footer = () => {
               </h1>
               <ul>
                 <li><Link href="/">Home</Link></li>
-                <li><Link href="/branch-shop">Branch Shop</Link></li>
+                <li><Link href="/about/#branchShop">Branch Shop</Link></li>
                 <li><Link href="/products">Products</Link></li>
                 <li><Link href="/ketentuan-kebijakan">Privacy Policy</Link></li>
               </ul>

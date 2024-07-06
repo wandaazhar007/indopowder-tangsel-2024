@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './about.scss';
 import { faGlassCheers, faHandshake, faHospitalAlt, faMoneyBill, faQuoteLeftAlt, faUser, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
+import BranchShop from '../components/branchShop/BranchShop';
 const AboutPage = () => {
 
   return (
@@ -96,6 +97,8 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
+
+        <BranchShop />
       </div>
 
 

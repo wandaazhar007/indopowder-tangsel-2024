@@ -40,7 +40,7 @@ const ProductListSection = () => {
     setTimeout(() => {
       setVisibleItemCount(prevCount => prevCount + 4);
       setIsLoading(false);
-    }, 700)
+    }, 3000)
     console.log(visibleItemCount)
   };
 
@@ -122,7 +122,7 @@ const ProductListSection = () => {
                 <p className="price">Rp. {product.price},-</p>
                 <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
               </div>
-              {isLoading ? (
+              {/* {isLoading ? (
                 <div className="boxProductsList">
                   <div className="skeleton imageProductSkeleton">
                   </div>
@@ -133,18 +133,8 @@ const ProductListSection = () => {
                   <button className="skeleton buttonAddToCartSkeleton" ></button>
                 </div>
               ) : (
-                // <div className="boxProductsItem" key={product.id}>
-                //   <div className="imageProduct" onClick={() => handleModal(product.id)}>
-                //     <Image src={product.urlImage} width={300} height={300} alt='indopowder tangsel' />
-                //   </div>
-                //   <hr />
-                //   <p className="category">{product.category.name}</p>
-                //   <h1 className="title" onClick={() => handleModal(product.id)}>{product.name}</h1>
-                //   <p className="price">Rp. {product.price},-</p>
-                //   <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
-                // </div>
                 ''
-              )}
+              )} */}
             </>
           ))}
 
@@ -153,8 +143,10 @@ const ProductListSection = () => {
         {visibleItemCount === 20 ? (
           <button className="linkProducts"><Link href="/products"><FontAwesomeIcon icon={faArrowUpRightFromSquare} className='icon' /> Products Page</Link></button>
         ) : (
-          <button className="linkProducts" onClick={handleLoadMore}>
-            {isLoading ? 'Loading...' : <><FontAwesomeIcon icon={faLongArrowDown} className='icon' /> Load More</>}
+          <button className="loadMoreButton" onClick={handleLoadMore}>
+            {isLoading ? (
+              <div className="loader"></div>
+            ) : <><FontAwesomeIcon icon={faLongArrowDown} className='icon' /> Load More</>}
           </button>
         )}
         {/* <button className="linkProducts" onClick={handleLoadMore}>

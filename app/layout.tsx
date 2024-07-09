@@ -7,6 +7,7 @@ import Footer from './components/footer/Footer';
 import FloatingCart from './components/floatingCart/FloatingCart';
 import CartProvider from './context/CartContex';
 import SearchProvider from './context/SearchContext';
+import SessionWrapper from './lib/SessionWrapper';
 // import { usePathname } from 'next/navigation'
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,17 +24,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <CartProvider>
-        <SearchProvider>
-          <body>
-            <Navbar />
-            {children}
-            <FloatingCart />
-            <Footer />
-          </body>
-        </SearchProvider>
-      </CartProvider>
-    </html>
+    <SessionWrapper>
+      <html lang="en">
+        <CartProvider>
+          <SearchProvider>
+            <body>
+              <Navbar />
+              {children}
+              <FloatingCart />
+              <Footer />
+            </body>
+          </SearchProvider>
+        </CartProvider>
+      </html>
+    </SessionWrapper>
   );
 }

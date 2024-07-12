@@ -8,12 +8,51 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 import Image from 'next/image';
 import { signIn, signOut, useSession } from "next-auth/react";
+// import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const LogiPage = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
+  const [isBtnLoading, setIsBtnLoading] = useState(false);
+  const router = useRouter();
+
+
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+    // setIsBtnLoading(true);
+    setIsBtnLoading(true);
+    setTimeout(async () => {
+      try {
+        await axios.post(process.env.NEXT_PUBLIC_LOGIN as string, {
+          // await axios.post('http://localhost:2002/api/login' as string, {
+          email: email,
+          password: password
+        });
+        router.push('/profile');
+      } catch (error: any) {
+        if (error.response) {
+          setMsg(error.response.data.msg);
+          setIsBtnLoading(false)
+        }
+      }
+    }, 1000)
+  }
+
+  const checkLogin = async () => {
+    if (typeof window !== 'undefined') { // Ensure this code runs only on the client side
+      const check = await axios.get('http://localhost:2002/api/token' as string);
+      if (check) {
+        router.back();
+      }
+    }
+  };
+
+  useEffect(() => {
+    // checkLogin();
+  }, [])
 
   return (
 
@@ -42,18 +81,26 @@ const LogiPage = () => {
         {msg && (<p className='errorMessage'>{msg}</p>)}
         <div className="content">
 
-          <form >
+          <form onSubmit={handleLogin}>
             <div className="inputGroup">
               <label htmlFor="email">Email</label>
-              <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <input type="email" name="email" value={email} onChange={(e) => { setEmail(e.target.value); setMsg('') }} />
             </div>
             <div className="inputGroup">
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input type="password" name="password" value={password} onChange={(e) => { setPassword(e.target.value); setMsg('') }} />
             </div>
             <div className="buttonLoginWrapper">
               <button className='btnLogin'>
-                Login <FontAwesomeIcon icon={faSignIn} className="icon" />
+                {isBtnLoading ? (
+                  <>
+                    <div className="loader" typeof='submit'></div>
+                  </>
+                ) : (
+                  <>
+                    Login <FontAwesomeIcon icon={faSignIn} className="icon" />
+                  </>
+                )}
               </button>
             </div>
           </form>

@@ -26,6 +26,7 @@ const ProductListSection = () => {
   const [query, setQuery] = useState("");
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingCart, setIsLoadingCart] = useState(false);
   const [visibleItemCount, setVisibleItemCount] = useState(4);
 
   const getProducts = async () => {
@@ -89,6 +90,7 @@ const ProductListSection = () => {
 
 
   const handleClick2 = (id: number, nameProduct: string, price: number) => {
+    setIsLoadingCart(true);
     cart.addOneToCart(id, nameProduct, price);
     notify();
   }
@@ -120,7 +122,12 @@ const ProductListSection = () => {
                 <p className="category">{product.category.name}</p>
                 <h1 className="title" onClick={() => handleModal(product.id)}>{product.name}</h1>
                 <p className="price">Rp. {product.price},-</p>
-                <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to cart</button>
+
+                {/* {cart.items.map((currentProduct: any, idx) => (
+                  <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to Cart</button>
+                ))} */}
+                <button className="buttonAddToCart" onClick={() => handleClick2(product.id, product.name, product.price)}><FontAwesomeIcon icon={faCartArrowDown} className="icon" /> Add to Cart</button>
+
               </div>
               {/* {isLoading ? (
                 <div className="boxProductsList">
@@ -145,7 +152,7 @@ const ProductListSection = () => {
         ) : (
           <button className="loadMoreButton" onClick={handleLoadMore}>
             {isLoading ? (
-              <div className="loader"></div>
+              <div className="loaderLoadMore"></div>
             ) : <><FontAwesomeIcon icon={faLongArrowDown} className='icon' /> Load More</>}
           </button>
         )}

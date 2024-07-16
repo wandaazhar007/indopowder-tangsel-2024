@@ -3,8 +3,6 @@ import './cart.scss';
 import { faArrowLeft, faClock, faL, faMapLocation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-// import CartComponent from "../components/cart/CartComponent";
-// import { CartContext } from "../context/CartContext";
 import CartList from '../components/cartList/CartList';
 import { CartContext } from '../context/CartContex';
 import { useContext, useState } from 'react';
@@ -50,8 +48,8 @@ const CartPage = () => {
               <div className="colLeftContentsCart">
                 <h1 className="title">Your Cart</h1>
                 <p className="totalOrder">Total Order {productsCount} items</p>
-                {cart.items.map((currentProduct: any, idx) => (
-                  <CartList key={idx} id={currentProduct.id} quantity={currentProduct.quantity} />
+                {cart.items.map((currentProduct: any) => (
+                  <CartList key={currentProduct.id} id={currentProduct.id} quantity={currentProduct.quantity} />
                 ))}
               </div>
 
@@ -107,10 +105,6 @@ const CartPage = () => {
                     <p>Subtotal</p>
                     <p>{cart.getTotalCost()}</p>
                   </div>
-                  {/* <div className="boxSummary">
-                <p>Estimated taxes (MI Sales Tax)</p>
-                <p>0.42</p>
-              </div> */}
                   <div className="boxSummary">
                     <p>Tip</p>
                     <p>{tipValue}</p>
@@ -126,10 +120,6 @@ const CartPage = () => {
                 </div>
               </div>
             </div>
-
-            {/* {cart.items.map((currentProduct: any, idx) => (
-          <CartList key={idx} id={currentProduct.id} quantity={currentProduct.quantity} />
-        ))} */}
 
             <div className="footer">
               <div className="footerCartOne">

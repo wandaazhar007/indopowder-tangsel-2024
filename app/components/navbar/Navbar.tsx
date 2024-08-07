@@ -8,12 +8,19 @@ import { useContext, useState } from 'react';
 import { CartContext } from '@/app/context/CartContex';
 import { disableNavWithFooter } from '@/app/lib/DisableNavbarFooter';
 import { usePathname } from 'next/navigation';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 const Navbar: React.FC = () => {
+  const { data: session } = useSession();
   const path = usePathname();
   const cart = useContext(CartContext);
   const pathName = usePathname();
   const [active, setActive] = useState(false);
+  const [modalLoginActive, setModalLoginActive] = useState(false);
+
+  const handleModalLogin = () => {
+    setModalLoginActive(!modalLoginActive);
+  }
   const handleNavbar = () => {
     setActive(!active);
   }
@@ -67,9 +74,28 @@ const Navbar: React.FC = () => {
                     <></>
                   )}
                   <li>
-                    <Link href="/login">
-                      <button className="btn btnLogin"><FontAwesomeIcon icon={faSignIn} className="icon" /> Login</button>
-                    </Link>
+                    {/* <h1>{session?.user?.email}</h1> */}
+                    {session?.user?.email ?
+                      (
+                        <>
+                          <div className="userInfo">
+                            <h2 className='nameUserLogin' onClick={handleModalLogin}>{session?.user?.name}</h2>
+                            <div className="imageUserLogin">
+                              <Image onClick={handleModalLogin} src={session?.user?.image as string} width={100} height={100} alt='indopowder tangsel' />
+                            </div>
+                          </div>
+                          <div className={`modalUserLogin ${modalLoginActive ? `modalActive` : ''}`}>
+                            <ul>
+                              <li onClick={() => signOut()}>Logout</li>
+                              <li>Profile</li>
+                            </ul>
+                          </div>
+                        </>
+                      ) : (
+                        <Link href="/login">
+                          <button className="btn btnLogin"><FontAwesomeIcon icon={faSignIn} className="icon" /> Login</button>
+                        </Link>
+                      )}
                   </li>
                 </ul>
               </div>

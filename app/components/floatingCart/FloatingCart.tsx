@@ -31,7 +31,7 @@ const FloatingCart = () => {
       style={{ display: scrollPosition > 5500 ? "none" : "" }}
     >
       <Link href="/cart">
-        <div className={`boxFloatingCart ${productsCount && pathname != "/cart" ? 'active' : ""}`}>
+        <div className={`boxFloatingCart ${productsCount && pathname != "/cart" && pathname != "/login" && pathname != "/register" ? 'active' : ""}`}>
           <span className='productCount'> {productsCount}</span>
           <FontAwesomeIcon icon={faCartShopping} className='icon' />
           <span className='checkout'>Checkout</span>

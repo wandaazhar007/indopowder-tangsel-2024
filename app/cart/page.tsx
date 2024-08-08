@@ -8,6 +8,7 @@ import { CartContext } from '../context/CartContex';
 import { useContext, useState } from 'react';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import CartEmpty from '../components/cartEmpty/CartEmpty';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 
 const CartPage = () => {
@@ -17,6 +18,8 @@ const CartPage = () => {
   const cart = useContext(CartContext);
   const productsCount = cart.items?.reduce((sum, product: any) => sum + product.quantity, 0);
   const tipValue = (cart.getTotalCost().toFixed(2) / 100 * tip);
+
+  const { data: session } = useSession();
 
   const handleTip = (value: any) => {
     setTip(value);
@@ -115,8 +118,8 @@ const CartPage = () => {
                   </div>
                   <div className="infoSummary">Additional taxes and fees will be calculated at checkout
                   </div>
-                  <button className="btnPayment">Continue Payment (As Guest)</button>
-                  <Link className="btnLogin" href="#">Login With Google <FontAwesomeIcon icon={faGoogle} className="icon" /></Link>
+                  <Link href="#" className="btnPayment">Continue Payment (As Guest)</Link>
+                  <Link className="btnLogin" href="/login">Login With Google <FontAwesomeIcon icon={faGoogle} className="icon" /></Link>
                 </div>
               </div>
             </div>

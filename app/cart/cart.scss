@@ -326,17 +326,17 @@ Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink
           }
 
           .btnPayment {
-            background-color: #0A5286;
-            color: #fff;
+            background-color: $darkBlue;
+            color: $lightBlue;
             font-size: 1.4rem;
             border-radius: .5rem;
             padding: 1rem;
+            text-align: center;
             cursor: pointer;
-            border: transparent;
           }
 
           .btnLogin {
-            background-color: #e7e4e4;
+            background-color: #ffffff;
             color: #0A5286;
             font-size: 1.4rem;
             border-radius: .5rem;

@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
                 <ul>
                   {productsCount > 0 ? (
                     <li>
-                      <Link href="/cart">
+                      <Link href="/cart" onClick={handleClickMenu}>
                         <button className="btn btnCart"><FontAwesomeIcon icon={faCartShopping} className="icon" /> {productsCount}Cart</button>
                       </Link>
                     </li>
@@ -74,7 +74,6 @@ const Navbar: React.FC = () => {
                     <></>
                   )}
                   <li>
-                    {/* <h1>{session?.user?.email}</h1> */}
                     {session?.user?.email ?
                       (
                         <>
@@ -92,7 +91,7 @@ const Navbar: React.FC = () => {
                           </div>
                         </>
                       ) : (
-                        <Link href="/login">
+                        <Link href="/login" onClick={handleClickMenu}>
                           <button className="btn btnLogin"><FontAwesomeIcon icon={faSignIn} className="icon" /> Login</button>
                         </Link>
                       )}

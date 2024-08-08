@@ -11,7 +11,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 // import { useRouter } from 'next/router';
 import { useRouter } from 'next/navigation';
 
-const LogiPage = () => {
+const LoginPage = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -118,4 +118,4 @@ const LogiPage = () => {
   );
 }
 
-export default LogiPage;
+export default LoginPage;

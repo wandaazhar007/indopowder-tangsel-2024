@@ -118,8 +118,14 @@ const CartPage = () => {
                   </div>
                   <div className="infoSummary">Additional taxes and fees will be calculated at checkout
                   </div>
-                  <Link href="#" className="btnPayment">Continue Payment (As Guest)</Link>
-                  <Link className="btnLogin" href="/login">Login With Google <FontAwesomeIcon icon={faGoogle} className="icon" /></Link>
+                  {session?.user?.email ? (
+                    <Link href="#" className="btnPayment">Continue Payment As {session?.user?.name}</Link>
+                  ) : (
+                    <>
+                      <Link href="#" className="btnPayment">Continue Payment (As Guest)</Link>
+                      <Link className="btnLogin" href="/login">Login With Google <FontAwesomeIcon icon={faGoogle} className="icon" /></Link>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

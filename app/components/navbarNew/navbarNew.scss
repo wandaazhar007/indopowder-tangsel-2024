@@ -1,4 +1,15 @@
+/*
+Author: Wanda Azhar
+Location: Michigan, USA
+Contact: wandaazhar@gmail.com
+Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink distributors, built with Next.js, React.js, and TypeScript. It offers a visually engaging experience for users to explore and purchase a variety of powder drink products.
+*/
+
+@import '../../styles/responsive.scss';
+@import '../../styles/variable.scss';
+
 .navbar {
+  // border: .1rem solid salmon;
   position: fixed;
   display: flex;
   align-items: center;
@@ -7,56 +18,59 @@
   width: 100%;
   z-index: 2;
 
-
   .navbarContainer {
-    background-color: #0c7295; // TechCrunch green background
+    background-color: $darkBlue;
     color: #fff;
     display: flex;
     align-items: center;
-    // justify-content: center;
     justify-content: space-between;
-    padding: 15px 30px;
+    padding: 1.5rem 3rem;
     font-family: Arial, sans-serif;
     position: absolute;
     border-radius: 2rem;
-    // max-width: 120rem;
-    // top: 10rem;
-    // margin: 0 auto;
+    width: 90%;
+    max-width: 133.4rem;
+    // width: 100%;
 
-    // align-items: center;
+    .navbarLeft {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      // border: .1rem solid salmon;
 
-    .navbarLogo {
-      h1 {
-        font-size: 24px;
-        font-weight: bold;
-        margin: 0;
-        color: white;
+      .navbarLogo {
+        h1 {
+          font-size: 2.4rem;
+          font-weight: bold;
+          margin: 0;
+          color: white;
+        }
+
+        a {
+          text-decoration: none;
+          color: white;
+        }
       }
 
-      a {
-        text-decoration: none;
-        color: white;
-      }
-    }
+      .navbarLinks {
+        ul {
+          display: flex;
+          list-style: none;
+          padding: 0;
+          margin: 0;
 
-    .navbarLinks {
-      ul {
-        display: flex;
-        list-style: none;
-        padding: 0;
-        margin: 0;
+          li {
+            margin: 0 1.5rem;
 
-        li {
-          margin: 0 15px;
+            a {
+              color: white;
+              text-decoration: none;
+              font-size: 16px;
+              // font-weight: bold;
 
-          a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-
-            &:hover {
-              text-decoration: underline;
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
         }
@@ -94,5 +108,4 @@
       }
     }
   }
-
 }

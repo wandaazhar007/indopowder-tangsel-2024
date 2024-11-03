@@ -9,7 +9,9 @@ Description: Indopowder Tangsel is a dynamic e-commerce website for powder drink
 @import '../styles/variable.scss';
 
 .contact {
-  margin: 5rem 0;
+  border: .1rem solid salmon;
+  padding-top: 12rem;
+  padding-bottom: 8rem;
 
   .wrapContainer {
     .row1 {

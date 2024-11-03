@@ -8,6 +8,7 @@ import FloatingCart from './components/floatingCart/FloatingCart';
 import CartProvider from './context/CartContex';
 import SearchProvider from './context/SearchContext';
 import SessionWrapper from './lib/SessionWrapper';
+import NavbarNew from './components/navbarNew/NavbarNew';
 // import { usePathname } from 'next/navigation'
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +30,8 @@ export default function RootLayout({
         <CartProvider>
           <SearchProvider>
             <body>
-              <Navbar />
+              {/* <Navbar /> */}
+              <NavbarNew />
               {children}
               <FloatingCart />
               <Footer />

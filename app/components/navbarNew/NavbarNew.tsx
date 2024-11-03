@@ -16,7 +16,7 @@ const Navbar = () => {
           <ul>
             <li><a href="#latest">About</a></li>
             <li><a href="#startups">Product</a></li>
-            <li><a href="#venture">Faq's</a></li>
+            <li><a href="#venture">Faq &apos; s</a></li>
             <li><a href="#apple">Contact</a></li>
           </ul>
         </nav>
